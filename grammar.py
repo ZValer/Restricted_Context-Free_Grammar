@@ -39,6 +39,7 @@ sentences = [
     "Maria corre ràpidament",
     "ells ballant a Barcelona",
     "ell va a Catalunya",
+    "ells ballant a Barcelona i ell va a Catalunya",
     # Invalid
     "ràpidament",
     "ella vive en Barcelona",
