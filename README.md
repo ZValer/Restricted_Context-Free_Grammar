@@ -137,12 +137,22 @@ Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' |
 
 
 #### Strings to accept
+Sentence patterns that are accepted are
+- Subject + Verb + Adverb
+- Subject + Verb + Prepositional Phrase
+- Plus the use of conjunctions.
 
-- Maria corre ràpidament. (Maria runs quickly.)
-- Els gats menjen un cotxe vermell. (The cats eat a red car.)
-- ells ballant a Barcelona (They dance in Barcelona.)
-- Ell va a Catalunya. (He goes to Catalonia.)
-- les nenes van a Praga però els nens van a Madris (the girls go to Prague but the boys go to Madrid)
+
+Only valid sentences are accepted, and adjective on its own is not valid.
+
+###### Valid
+- "Maria corre ràpidament",
+- "ells ballant a Barcelona",
+- "ell va a Catalunya",
+###### Invalid
+- "ràpidament",
+- "ella vive en Barcelona",
+- "ells bailaaant na Barclona"
 
 
 ### Implementation:
