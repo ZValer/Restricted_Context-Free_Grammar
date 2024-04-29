@@ -147,6 +147,8 @@ Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' |
 
 ### Implementation:
 The implementation uses the library nltk in python.
+To test every grammar modification (ambiguous, non ambiguous and no left recursion):
+https://colab.research.google.com/drive/1nnfthD9neyCilSnmddMhJuA5_lhBcYDd?usp=sharing 
 
 ### Test: 
 Run the program to accept the grammar. 
