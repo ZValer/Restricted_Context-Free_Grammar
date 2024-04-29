@@ -54,76 +54,76 @@ Translinguo Global. (2022). “Todo lo que necesitas saber sobre el idioma catal
 
 ### Models:
 #### Generate a grammar that recognizes the language.
-E -> NP VP | NP VP NP | VP | E Conj E
-NP -> Det N | PropN | Pron | Det N Adj | Det N PP | PropN PP | Pron PP
-PP -> P NP
-VP -> V | V Adv | V PP 
-Adj -> gran | blau | bonic | veloc | vermell
-Adv -> ràpidament | ben
-V -> menja | corre | va | és | manegen | ballant | van
-Conj -> i | o | però | sinó | ',' 
-Det -> el | la | els | les | un | una | uns | unes
-N -> gat | gats | gata | gates | cotxe | cotxes | casa | cases | nenes | nens
-P -> a | amb | en | per | sobre
-PropN -> Maria | Pere | Barcelona | Catalunya | Praga | Madris
+E -> NP VP | NP VP NP | VP | E Conj E  
+NP -> Det N | PropN | Pron | Det N Adj | Det N PP | PropN PP | Pron PP  
+PP -> P NP  
+VP -> V | V Adv | V PP   
+Adj -> gran | blau | bonic | veloc | vermell  
+Adv -> ràpidament | ben  
+V -> menja | corre | va | és | manegen | ballant | van  
+Conj -> i | o | però | sinó | ','   
+Det -> el | la | els | les | un | una | uns | unes  
+N -> gat | gats | gata | gates | cotxe | cotxes | casa | cases | nenes | nens  
+P -> a | amb | en | per | sobre  
+PropN -> Maria | Pere | Barcelona | Catalunya | Praga | Madris  
 Pron -> jo | tu | ell | ella | nosaltres | vós | ells | elles | això | aixòs | aquell | aquella | aquests | aquestes
 
 #### Eliminate Ambiguity in the grammar.
-E -> E Conj T | T 
-T -> NounP VP NounP
-NounP -> NP Des |  empty
-NP -> Det N | PropN | Pron 
-Des -> Adj | PP |  empty
-PP -> P NP
-VP -> V C
-C -> Adv | PP |  empty
-Adj -> gran | blau | bonic | veloc | vermell
-Adv -> ràpidament | ben
-V -> menja | corre | va | és | manegen | ballant | van
-Conj -> i | o | però | sinó | ','
-Det -> el | la | els | les | un | una | uns | unes
-N -> gat | gats | gata | gates | cotxe | cotxes | casa | cases | nenes | nens
-P -> a | amb | en | per | sobre
-PropN -> Maria | Pere | Barcelona | Catalunya | Praga | Madris
-Pron -> jo | tu | ell | ella | nosaltres | vós | ells | elles | això | aixòs | aquell | aquella | aquests | aquestes
+E -> E Conj T | T  
+T -> NounP VP NounP  
+NounP -> NP Des |  empty  
+NP -> Det N | PropN | Pron   
+Des -> Adj | PP |  empty  
+PP -> P NP  
+VP -> V C  
+C -> Adv | PP |  empty  
+Adj -> gran | blau | bonic | veloc | vermell  
+Adv -> ràpidament | ben  
+V -> menja | corre | va | és | manegen | ballant | van  
+Conj -> i | o | però | sinó | ','  
+Det -> el | la | els | les | un | una | uns | unes  
+N -> gat | gats | gata | gates | cotxe | cotxes | casa | cases | nenes | nens  
+P -> a | amb | en | per | sobre  
+PropN -> Maria | Pere | Barcelona | Catalunya | Praga | Madris  
+Pron -> jo | tu | ell | ella | nosaltres | vós | ells | elles | això | aixòs | aquell | aquella | aquests | aquestes  
 
 
 #### Eliminate left recursion in the grammar.
-E -> T E'
-E' -> Conj T E' |  empty
+E -> T E'  
+E' -> Conj T E' |  empty  
 
 
-T -> NounP VP NounP
+T -> NounP VP NounP  
 
 
-NounP -> NP Des |  empty
-NP -> Det N | PropN | Pron 
-Des -> Adj | PP |  empty
-PP -> P NP
+NounP -> NP Des |  empty  
+NP -> Det N | PropN | Pron   
+Des -> Adj | PP |  empty  
+PP -> P NP  
 
 
-VP -> V C
-C -> Adv | PP |  empty
+VP -> V C  
+C -> Adv | PP |  empty  
 
 
-Adj -> gran | blau | bonic | veloc | vermell
-Adv -> ràpidament | ben
-V -> menja | corre | va | és | manegen | ballant | van
-Conj -> i | o | però | sinó | ','
-Det -> el | la | els | les | un | una | uns | unes
-N -> gat | gats | gata | gates | cotxe | cotxes | casa | cases | nenes | nens
-P -> a | amb | en | per | sobre
-PropN -> Maria | Pere | Barcelona | Catalunya | Praga | Madris
-Pron -> jo | tu | ell | ella | nosaltres | vós | ells | elles | això | aixòs | aquell | aquella | aquests | aquestes
+Adj -> gran | blau | bonic | veloc | vermell  
+Adv -> ràpidament | ben  
+V -> menja | corre | va | és | manegen | ballant | van  
+Conj -> i | o | però | sinó | ','  
+Det -> el | la | els | les | un | una | uns | unes  
+N -> gat | gats | gata | gates | cotxe | cotxes | casa | cases | nenes | nens  
+P -> a | amb | en | per | sobre   
+PropN -> Maria | Pere | Barcelona | Catalunya | Praga | Madris  
+Pron -> jo | tu | ell | ella | nosaltres | vós | ells | elles | això | aixòs | aquell | aquella | aquests | aquestes  
 
 
 #### Strings to accept
 
-Maria corre ràpidament. (Maria runs quickly.)
-Els gats menjen un cotxe vermell. (The cats eat a red car.)
-ells ballant a Barcelona (They dance in Barcelona.)
-Ell va a Catalunya. (He goes to Catalonia.)
-les nenes van a Praga però els nens van a Madris (the girls go to Prague but the boys go to Madrid)
+- Maria corre ràpidament. (Maria runs quickly.)
+- Els gats menjen un cotxe vermell. (The cats eat a red car.)
+- ells ballant a Barcelona (They dance in Barcelona.)
+- Ell va a Catalunya. (He goes to Catalonia.)
+- les nenes van a Praga però els nens van a Madris (the girls go to Prague but the boys go to Madrid)
 
 
 ### Implementation:
