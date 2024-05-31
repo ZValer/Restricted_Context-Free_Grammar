@@ -39,21 +39,26 @@ In addition to the basic SVO structure, a few common sentence patterns are the f
 
 
 
-
-##### References:
-
-Gutman, A. & Avanzati, B. (2013). Catalan. The Language Gulper. Retrieved from:
-https://www.languagesgulper.com/eng/Catalan.html#:~:text=The%20basic%20word%20order%20in,subject%20at%20all%20(impersonal).
-
-TalkPal. (2024). Understanding Simple Sentences in Catalan Grammar. TalkPal AI. Retrieved from: https://talkpal.ai/grammar/simple-sentences-in-catalan-grammar/ 
-
-TalkPal. (2024). Catalan Grammar: A Quick Guide for Language Enthusiasts.TalkPal AI. Retrieved from: https://talkpal.ai/catalan-grammar/ 
-
-Translinguo Global. (2022). “Todo lo que necesitas saber sobre el idioma catalán”. Transilguo. Retrieved from: https://translinguoglobal.com/idioma-catalan/ 
-
-
 ### Models:
-### Generate a grammar that recognizes the language.
+
+**Grammar** includes a set of rules which we can derive strings. These rules are effectively statements of logical equivalence of tht form  ψ → ω, where ψ and ω are strings (Caltech, s.f.). Each branch corresponds to one rule. The mother of each branch corresponds to ψ and the daughters to ω. 
+
+The language that is being modelled can be described in a **context-Free grammar**, in which all rules of R are of the form A → ψ  
+- **A:** is a single non-terminal element of V<sub>N</sub>
+- **ψ:** is a string of terminals from V<sub>T</sub> and non-terminals from of V<sub>N</sub>.
+  
+Example...  
+- **V<sub>T</sub>** = {a, b}
+- **V<sub>N</sub>** = {S, A}
+- **S**=S
+- **R** = {S → Ab, A → ε , A → Aa] 
+
+### Generating the grammar that recognizes the language.
+In the model analyzed of Catalan the non terminals are elements such as Subject, Verb, Adverb, Prepositional Phrase; and terminal are words such as 
+'gran', 'blau', 'ràpidament',  'ben','menja', 'corre'.
+
+
+**Grammar:**
 E -> NP VP | NP VP NP | VP | E Conj E  
 NP -> Det N | PropN | Pron | Det N Adj | Det N PP | PropN PP | Pron PP  
 PP -> P NP  
@@ -168,3 +173,16 @@ Run the program to accept the grammar.
 (Thoroughly explain what type of grammar it is (Chomsky Hierarchy Extended Level), what traits does it have, and why is not on any other level.)
 
 
+
+##### References:
+
+Gutman, A. & Avanzati, B. (2013). Catalan. The Language Gulper. Retrieved from:
+https://www.languagesgulper.com/eng/Catalan.html#:~:text=The%20basic%20word%20order%20in,subject%20at%20all%20(impersonal).
+
+TalkPal. (2024). Understanding Simple Sentences in Catalan Grammar. TalkPal AI. Retrieved from: https://talkpal.ai/grammar/simple-sentences-in-catalan-grammar/ 
+
+TalkPal. (2024). Catalan Grammar: A Quick Guide for Language Enthusiasts.TalkPal AI. Retrieved from: https://talkpal.ai/catalan-grammar/ 
+
+Translinguo Global. (2022). “Todo lo que necesitas saber sobre el idioma catalán”. Transilguo. Retrieved from: https://translinguoglobal.com/idioma-catalan/ 
+
+Caltech. (s.f.). Chapter 6 Formal Language Theory. Math.dvi. Retrieved from: https://www.its.caltech.edu/~matilde/FormalLanguageTheory.pdf 
