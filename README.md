@@ -292,17 +292,45 @@ Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' |
 
 
 #### Adapted for the code
-The code didn´t accept the use of ‘ and ϵ so it was changed to the following:
+The nltk library doesn´t accept the use of ' and ϵ. The next steps were followed to get an acceptable grammar for the library:  
+
+For the following:
+```
+E ->  E2 E’
+E’ -> Conj E2 E’ | ϵ
+```
+Step 1: Whenever encountering ' change it to 'apos', meaning E' converts to Eapos, for S' changes to Sapos, V' to Vapos and PP' to PPapos.
+```
+E ->  E2 Eapos
+Eapos -> Conj E2 Epos | ϵ
+
+```
+2. As for ϵ it had to be explicitely indicated.
+As for this case, Eapos can take the value of ϵ / empty, meaning in the first line, E could or could not include Eapos, and in the second line E the same thing. 
+```
+E ->  E2 Eapos | E2
+Eapos -> Conj E2 Eapos | Conj E2
+
+```
+
+These steps were followed through all the grammar. Leaving us with a grammar representing the previous grammar that can be (...) with nltk library:  
 
 ``` ruby
-E -> E2 | E3  
-E2 -> S | S2 | VP   
-E3 -> NP VP Conj NP VP   
-S -> NP VP  
-S2 -> NP VP NP    
-NP -> Det N | PropN | Pron | Det N Adj | Det N PP | PropN PP | Pron PP  
-PP -> P NP  
-VP -> V | V Adv | V PP  
+E ->  E2 Eapos | E2
+Eapos -> Conj E2 Eapos | Conj E2
+E2 -> S V | V
+S -> S2 Sapos | S2
+Sapos -> Conj S2 Sapos | Conj S2
+S2 -> S3 AdjQual | S3
+S3 -> Det S4 | PropN | S4
+S4 -> Pron | N 
+Det -> Art | Art AdjPos | AdjC
+V -> V2 Vapos | V2
+Vapos -> Conj V2 Vapos | Conj V2
+V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
+PP -> Prep S PPapos |  Prep S
+PPapos -> Prep S PPapos | Prep S 
+
 
 Adj -> 'gran' | 'blau' | 'bonic' | 'veloc' | 'vermell'  
 Adv -> 'ràpidament' | 'ben'  
