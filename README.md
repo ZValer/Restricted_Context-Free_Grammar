@@ -183,7 +183,7 @@ Which after removing ambiguity we have:
 ```
 PP -> PP Prep S | Prep S
 ```
--->
+-------------------------------------------
 
 Leaving us with the next grammar, where inputs can only generate one Parse tree:
 
@@ -220,6 +220,25 @@ To eliminate left recursion the next rule as followed.
 > [!IMPORTANT]
 > A -> Aα | β by { A -> βA' , A' -> αA' | ϵ
 > [Add reference]
+
+To eliminate left recursion from this:
+- E ->  E Conj E2 | E2
+We consider:
+    - A = 
+    - α =
+    - β =
+    - A'=
+```
+```
+E2 -> S V | V
+S -> S Conj S2 | S2
+S2 -> S3 AdjQual | S3
+S3 -> Det S4 | PropN | S4
+S4 -> Pron | N 
+Det -> Art | Art AdjPos | AdjC
+V -> V Conj V2 | V2
+V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
+PP -> PP Prep S | Prep S
 
 [ change this ... ]
 ```ruby
