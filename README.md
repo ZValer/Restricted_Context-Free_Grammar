@@ -83,7 +83,7 @@ Let's break down the analysis. To generate the grammar, the following sentences 
 2. Subject + Verb + Adverb: Ell camina ràpid. (He walks fast)
 3. Subject + Verb + Prepositional Phrase: Ella viu a Girona. (She lives in Girona)
 4. Subject + Verb: Ella viu a Girona. (She lives in Girona)
-5. Conjugated Verb: corre. (run)
+5. Impersonal sentences->Conjugated Verb: corre. (run)
 
 In the first rule (E) we have the option to form sentences with only a Verb (Sentence pattern number 5) or form sentences with Subject and Verb, having the possibility to later include additions, like adjetive, adverb or prepositional phrase.  
 
@@ -202,7 +202,7 @@ PP -> PP Prep S | Prep S
   
 Adj -> 'gran' | 'blau' | 'bonic' | 'veloc' | 'vermell'  
 Adv -> 'ràpidament' | 'ben'  
-V -> 'menja' | 'corre' | 'va' | 'és' | 'manegen' | 'ballant' | 'van'  
+V3 -> 'menja' | 'corre' | 'va' | 'és' | 'manegen' | 'ballant' | 'van'  
 Conj -> 'i' | 'o' | 'però' | 'sinó' | ','  
 Det -> 'el' | 'la' | 'els' | 'les' | 'un' | 'una' | 'uns' | 'unes'  
 N -> 'gat' | 'gats' | 'gata' | 'gates' | 'cotxe' | 'cotxes' | 'casa' | 'cases' |  
@@ -218,34 +218,54 @@ Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' |
 
 To eliminate left recursion the next rule as followed.
 > [!IMPORTANT]
-> A -> Aα | β by { A -> βA' , A' -> αA' | ϵ
+> A -> Aα | β by { A -> βA' , A' -> αA' | ϵ  
 > [Add reference]
 
-To eliminate left recursion from this:
-- E ->  E Conj E2 | E2
-We consider:
-    - A = 
-    - α =
-    - β =
-    - A'=
+To eliminate left recursion from this:   
+    - E ->  E Conj E2 | E2    
+We consider:  
+    - A = E  
+    - α = Conj E2  
+    - β = E2  
+    - A'= E'  
+Replacing the values on the rule we have:
 ```
+{ A -> β A' , A' -> αA' | ϵ  
+{ E -> E2 E' , E' -> Conj E2 E' | ϵ  
 ```
-E2 -> S V | V
-S -> S Conj S2 | S2
-S2 -> S3 AdjQual | S3
-S3 -> Det S4 | PropN | S4
-S4 -> Pron | N 
-Det -> Art | Art AdjPos | AdjC
-V -> V Conj V2 | V2
-V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
-PP -> PP Prep S | Prep S
 
-[ change this ... ]
+The next line that has the form A -> Aα | β, where we can find left recursion in the previous grammar is:  
+    - S -> S Conj S2 | S2   
+Replacing the rule we get:
+        - A = S  
+        - α = Conj S2  
+        - β = S2  
+        - A'= S'  
+
+```
+{ A -> β A' , A' -> αA' | ϵ
+{ S -> S2 S' , S' -> Conj S2 S' | ϵ
+```  
+For the next line also presents left recursion  
+    - V -> V Conj V2 | V2  
+And can be transformed in:
+```
+{ A -> β A' , A' -> αA' | ϵ
+{ V -> V2 V' , V' -> Conj V2 V' | ϵ
+```  
+Finally, for the next line:   
+    - PP -> PP Prep S | Prep S  
+We can eliminate left recursion:
+```
+{ A -> β A' , A' -> αA' | ϵ
+{ PP -> Prep S PP' , PP' -> Prep S PP' | ϵ
+```
+
+Leaving us with the following grammar without left recursion:
 ```ruby
 E ->  E2 E’
 E’ -> Conj E2 E’ | ϵ
-E2 -> S V E3 | V
-E3 -> Adv | PP | AdjQual | ϵ
+E2 -> S V | V
 S -> S2 S’
 S’ -> Conj S2 S’ | ϵ
 S2 -> S3 AdjQual | S3
@@ -254,12 +274,14 @@ S4 -> Pron | N
 Det -> Art | Art AdjPos | AdjC
 V -> V2 V’
 V’ ->Conj V2 V’ | ϵ
+V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
 PP -> Prep S PP’
 PP’ -> Prep S PP’ |  ϵ
 
+
 Adj -> 'gran' | 'blau' | 'bonic' | 'veloc' | 'vermell'  
 Adv -> 'ràpidament' | 'ben'  
-V -> 'menja' | 'corre' | 'va' | 'és' | 'manegen' | 'ballant' | 'van'  
+V3 -> 'menja' | 'corre' | 'va' | 'és' | 'manegen' | 'ballant' | 'van'  
 Conj -> 'i' | 'o' | 'però' | 'sinó' | ','  
 Det -> 'el' | 'la' | 'els' | 'les' | 'un' | 'una' | 'uns' | 'unes'  
 N -> 'gat' | 'gats' | 'gata' | 'gates' | 'cotxe' | 'cotxes' | 'casa' | 'cases' | 'nenes' | 'nens'  
@@ -270,7 +292,7 @@ Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' |
 
 
 #### Adapted for the code
-The code didn´t accept the use of ‘ so it was changed to the following:
+The code didn´t accept the use of ‘ and ϵ so it was changed to the following:
 
 ``` ruby
 E -> E2 | E3  
