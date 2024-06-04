@@ -57,7 +57,7 @@ In the model analyzed of Catalan the non terminals are elements such as Subject,
 [... Explain LL(1) and way it is going to be used...]
 
 **Grammar:**
-```
+``` ruby
 E -> S V | V | E Conj E  
 S -> Det S | Pron | N | PropN | S AdjQual | S Conj S  
 Det -> Art | Art AdjPos | AdjC  
@@ -121,6 +121,7 @@ PP -> Prep S | PP PP
 ```
 
 The non terminals include words of the language separated by category: 
+```
 V -> 'corre' | 'van' |'viatja' | 'visita' | 'visitem' | 'menja' | 'juga' | 'balla' | 'sóc' | 'és' | 'són' | 'som' | 'bota' | 'camina' | 'ploren'  
 Art -> 'el' | 'els' | 'la' | 'les' | 'un' | 'una' 
 AdjPos -> 'mi' | 'meves' | 'teu' | 'teus' | 'teva' | 'teves' | 'seva' | 'seves' | 'seu' | 'seus' | 'nostra' | 'nostre' | 'nostres'  
@@ -132,7 +133,7 @@ Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles'
 N -> 'nens' | 'nadons' | 'nena' | 'nenes' | 'nen' | 'nens' | 'dona' | 'dones' | 'home' | 'homes' | 'girafa' | 'cavall' | 'cotxe' | 'casa' | 'parc' | 'avió' | 'pares' | 'ballet' | 'futbol' | 'escola' | 'poma' | 'carn' | 'pesat'  
 PropN -> 'Xavi' | 'Albert' | 'Montse' | 'Eva' | 'Venècia' | 'Andorra' | 'València' | 'Catalonia' | 'Mèxic'  
 Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'encara que' | 'doncs' | 'però' | 'encara' | ',' | 'sinó'  
-  
+```
 
 ### Eliminate Ambiguity in the grammar.
 The previous grammar recognizes the language, however, it is ambiguous. This means a string can formed in more than own way with this rules, For example for: "Xavi , Montse i Albert van a Venècia amb avió amb els seus pares" these are a few ways that a Parse tree can be produced. 
@@ -145,41 +146,48 @@ To eliminate embiguity this steps need to be followed:
 1.2. And an "or" to get to the terminal
 
 Evaluating the previous grammar, reading from left to right, we can found ambiguity in the first rule (E):
-```
-E -> S V | V | **E Conj E**
-```
+
+  - E -> S V | V | **E Conj E**
+
 
 Which can be solved adding an intermediate non-terminal and an "or" to get to the terminal
-
+```
 E ->  E Conj E2 | E2  
 E2 -> S V | V  
-
+```
 The next rule we can found ambiguity is S, where we have:
-S -> Det S | Pron | N | PropN | S AdjQual | **S Conj S**
+  - S -> Det S | Pron | N | PropN | S AdjQual | **S Conj S**
 
 For this rule, many non-terminals where added: [... more explanation...]
+```
 S -> S Conj S2 | S2
 S2 -> S3 AdjQual | S3
 S3 -> Det S4 | PropN | S4
-S4 -> Pron | N 
+S4 -> Pron | N
+```
 
 We also can identify ambiguity in the following rule:
-V -> V | V AdjQual | V Adv | V PP | V Conj V  
+  - V -> V | V AdjQual | V Adv | V PP | V Conj V  
 
 That can be changed to:
+```
 V -> V Conj V2 | V2
 V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
+```
 
 
 Finally there is also ambiguity in this rule
-PP -> Prep S | PP PP  
+  - PP -> Prep S | PP PP  
 
 Which after removing ambiguity we have:
+```
 PP -> PP Prep S | Prep S
+```
 -->
 
 Leaving us with the next grammar, where inputs can only generate one Parse tree:
 
+``` ruby
 E ->  E Conj E2 | E2
 E2 -> S V | V
 S -> S Conj S2 | S2
@@ -202,16 +210,19 @@ N -> 'gat' | 'gats' | 'gata' | 'gates' | 'cotxe' | 'cotxes' | 'casa' | 'cases' |
 P -> 'a' | 'amb' | 'en' | 'per' | 'sobre'    
 PropN -> 'Maria' | 'Pere' | 'Barcelona' | 'Catalunya' | 'Praga' | 'Madris'    
 Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' |
- 'això' | 'aixòs' | 'aquell' | 'aquella' | 'aquests' | 'aquestes'  
-  
+ 'això' | 'aixòs' | 'aquell' | 'aquella' | 'aquests' | 'aquestes'
+```
 
 ### Eliminate left recursion in the grammar.
-To eliminate left recursion the next rule as followed
+[ Add why is it important to eliminate left recursion ]
+
+To eliminate left recursion the next rule as followed.
 > [!IMPORTANT]
 > A -> Aα | β by { A -> βA' , A' -> αA' | ϵ
 > [Add reference]
 
 [ change this ... ]
+```ruby
 E ->  E2 E’
 E’ -> Conj E2 E’ | ϵ
 E2 -> S V E3 | V
@@ -236,12 +247,13 @@ N -> 'gat' | 'gats' | 'gata' | 'gates' | 'cotxe' | 'cotxes' | 'casa' | 'cases' |
 P -> 'a' | 'amb' | 'en' | 'per' | 'sobre'  
 PropN -> 'Maria' | 'Pere' | 'Barcelona' | 'Catalunya' | 'Praga' | 'Madris'  
 Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' | 'això' | 'aixòs' | 'aquell' | 'aquella' | 'aquests' | 'aquestes'  
-
+```
 
 
 #### Adapted for the code
 The code didn´t accept the use of ‘ so it was changed to the following:
 
+``` ruby
 E -> E2 | E3  
 E2 -> S | S2 | VP   
 E3 -> NP VP Conj NP VP   
@@ -260,18 +272,28 @@ N -> 'gat' | 'gats' | 'gata' | 'gates' | 'cotxe' | 'cotxes' | 'casa' | 'cases' |
 P -> 'a' | 'amb' | 'en' | 'per' | 'sobre'  
 PropN -> 'Maria' | 'Pere' | 'Barcelona' | 'Catalunya' | 'Praga' | 'Madris'  
 Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' | 'això' | 'aixòs' | 'aquell' | 'aquella' | 'aquests' | 'aquestes'  
-
+```
 
 
 
 #### Strings to accept
-Sentence patterns that are accepted are
-- Subject + Verb + Adverb
-- Subject + Verb + Prepositional Phrase
-- Plus the use of conjunctions.
+Sentence patterns that are accepted plus the use of conjunctions.
+
+1. Subject + Verb + Adjective
+  - La casa és verda. (The house is green)
+2. Subject + Verb + Adverb
+  - Ell camina ràpid. (He walks fast)
+3. Subject + Verb + Prepositional Phrase
+  - Ella viu a Girona. (She lives in Girona)
+4. Subject + Verb
+  - Ella viu a Girona. (She lives in Girona)
+5. Conjugated Verb
+  - corre. (run)
+6. Conjunctions with this sentences paterns
+  - example 1...
+  - example 2...
 
 
-Only valid sentences are accepted, and adjective on its own is not valid.
 
 ###### Valid
 - "Maria corre ràpidament",
