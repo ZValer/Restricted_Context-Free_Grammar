@@ -280,18 +280,18 @@ Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' |
 Sentence patterns that are accepted plus the use of conjunctions.
 
 1. Subject + Verb + Adjective
-  - La casa és verda. (The house is green)
+    - La casa és verda. (The house is green)
 2. Subject + Verb + Adverb
-  - Ell camina ràpid. (He walks fast)
+    - Ell camina ràpid. (He walks fast)
 3. Subject + Verb + Prepositional Phrase
-  - Ella viu a Girona. (She lives in Girona)
+    - Ella viu a Girona. (She lives in Girona)
 4. Subject + Verb
-  - Ella viu a Girona. (She lives in Girona)
+    - Ella viu a Girona. (She lives in Girona)
 5. Conjugated Verb
-  - corre. (run)
+    - corre. (run)
 6. Conjunctions with this sentences paterns
-  - example 1...
-  - example 2...
+    - example 1...
+    - example 2...
 
 
 
