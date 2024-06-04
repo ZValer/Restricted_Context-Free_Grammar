@@ -57,6 +57,7 @@ In the model analyzed of Catalan the non terminals are elements such as Subject,
 [... Explain LL(1) and way it is going to be used...]
 
 **Grammar:**
+```
 E -> S V | V | E Conj E  
 S -> Det S | Pron | N | PropN | S AdjQual | S Conj S  
 Det -> Art | Art AdjPos | AdjC  
@@ -74,7 +75,7 @@ Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles'
 N -> 'nens' | 'nadons' | 'nena' | 'nenes' | 'nen' | 'nens' | 'dona' | 'dones' | 'home' | 'homes' | 'girafa' | 'cavall' | 'cotxe' | 'casa' | 'parc' | 'avió' | 'pares' | 'ballet' | 'futbol' | 'escola' | 'poma' | 'carn' | 'pesat'  
 PropN -> 'Xavi' | 'Albert' | 'Montse' | 'Eva' | 'Venècia' | 'Andorra' | 'València' | 'Catalonia' | 'Mèxic'  
 Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'encara que' | 'doncs' | 'però' | 'encara' | ',' | 'sinó'  
-
+```
 
 Let's break down the analysis. To generate the grammar, the following sentences patters were considered plus the use of conjunctions.
 
@@ -99,20 +100,25 @@ Articles in Catalan are “el”, “la”, “els” and “les”. Indefinite 
 3. And they can be added qualitative adjectives (AdjQual) to the describe the nouns, "and in Catalan, they agree in gender and number with the nouns they modify." (TalkPal, 2024).
    
 5. Additionaly there is also the case where we have more than one Subject joined by a conjunction.
-   
-**S -> Det S | Pron | N | PropN | S AdjQual | S Conj S  
-Det -> Art | Art AdjPos | AdjC**
 
+```
+S -> Det S | Pron | N | PropN | S AdjQual | S Conj S  
+Det -> Art | Art AdjPos | AdjC
+```
 
 Verbs in Catalan are classified into three groups with its distinct conjugation pattern based on their infinitive endings: “-ar,” “-er,” and “-ir.” Catalan also has auxiliary verbs (like ‘to have’ and ‘to be’) that combine with other verbs to create compound tenses and passive voice (TalkPal, 2024). But auxiliary verbs will not be considered for this grammar.  
 
 As can be seen in the sentence's patterns, verbs can be alone or they can be followed by a qualitative adjetive, an adverb or a Prepositional Phrase. And we can include one or many verbs.
 
-**V -> V | V AdjQual | V Adv | V PP | V Conj V**
+```
+V -> V | V AdjQual | V Adv | V PP | V Conj V
+```
 
 "Additionally, Catalan prepositions (such as “a,” “de,” “en,” “amb”) help you connect words and phrases and show relationships between them" (TalkPal, 2024). A prepositional phrase consists of a preposition and a subject and we will consider the possibility of having more than une combination of these. So we can form sentences like "Xavi , Montse i Albert van **a Venècia**...**amb avió**...**amb els seus pares**"
 
-**PP -> Prep S | PP PP** 
+```
+PP -> Prep S | PP PP
+```
 
 The non terminals include words of the language separated by category: 
 V -> 'corre' | 'van' |'viatja' | 'visita' | 'visitem' | 'menja' | 'juga' | 'balla' | 'sóc' | 'és' | 'són' | 'som' | 'bota' | 'camina' | 'ploren'  
@@ -139,7 +145,9 @@ To eliminate embiguity this steps need to be followed:
 1.2. And an "or" to get to the terminal
 
 Evaluating the previous grammar, reading from left to right, we can found ambiguity in the first rule (E):
+```
 E -> S V | V | **E Conj E**
+```
 
 Which can be solved adding an intermediate non-terminal and an "or" to get to the terminal
 
