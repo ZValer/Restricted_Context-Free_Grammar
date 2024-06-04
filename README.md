@@ -86,7 +86,7 @@ Let's break down the analysis. To generate the grammar, the following sentences 
 
 In the first rule (E) we have the option to form sentences with only a Verb (Sentence pattern number 5) or form sentences with Subject and Verb, having the possibility to later include additions, like adjetive, adverb or prepositional phrase.  
 
-**E -> S V | V | E Conj E**
+> E -> S V | V | E Conj E
 
 The nexts 2 rules indicate the forms that a Subject can take:
 1. Subjects can go after a determinant which are predominal modifiers that can be an article (Art), an article (Art) with a possessive adjective (AdjPos) or an adjective complement (AdjC).
@@ -197,6 +197,11 @@ Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' |
   
 
 ### Eliminate left recursion in the grammar.
+To eliminate left recursion the next rule as followed
+> [!IMPORTANT]
+> A -> Aα | β by { A -> βA' , A' -> αA' | ϵ
+> [Add reference]
+
 [ change this ... ]
 E ->  E2 E’
 E’ -> Conj E2 E’ | ϵ
