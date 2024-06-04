@@ -35,9 +35,6 @@ In addition to the basic SVO structure, a few common sentence patterns are the f
 6. Negative sentences: No vull cafè. (I don’t want coffee)
 (TalkPal, 2024)
 
-*The analysis will include sentences patters 2, 3 plus the use of conjunctions.
-
-
 
 ### Models:
 
@@ -57,31 +54,134 @@ Example...
 In the model analyzed of Catalan the non terminals are elements such as Subject, Verb, Adverb, Prepositional Phrase; and terminal are words such as 
 'gran', 'blau', 'ràpidament',  'ben','menja', 'corre'.
 
+[... Explain LL(1) and way it is going to be used...]
 
 **Grammar:**
-E -> NP VP | NP VP NP | VP | E Conj E  
-NP -> Det N | PropN | Pron | Det N Adj | Det N PP | PropN PP | Pron PP  
-PP -> P NP  
-VP -> V | V Adv | V PP  
+E -> S V | V | E Conj E  
+S -> Det S | Pron | N | PropN | S AdjQual | S Conj S  
+Det -> Art | Art AdjPos | AdjC  
+V -> V | V AdjQual | V Adv | V PP | V Conj V  
+PP -> Prep S | PP PP  
 
-Adj -> 'gran' | 'blau' | 'bonic' | 'veloc' | 'vermell'  
+V -> 'corre' | 'van' |'viatja' | 'visita' | 'visitem' | 'menja' | 'juga' | 'balla' | 'sóc' | 'és' | 'són' | 'som' | 'bota' | 'camina' | 'ploren'  
+Art -> 'el' | 'els' | 'la' | 'les' | 'un' | 'una' | 'uns' | 'unes'  
+AdjPos -> 'mi' | 'meves' | 'teu' | 'teus' | 'teva' | 'teves' | 'seva' | 'seves' | 'seu' | 'seus' | 'nostra' | 'nostre' | 'nostres'  
+AdjQual -> 'gran' | 'petit' | 'blanc' | 'vermell' | 'groc' | 'blau' | 'nou' | 'vell' | 'veloc'  
+AdjC -> 'aquest' | 'aquesta' | 'això' | 'aquell' | 'aquella' | 'aquests' | 'aquestes' | 'aquells' | 'aquelles' | 'dos' | 'tres' | 'quatre' | 'cinc' | 'sis' | 'deu' | 'quinze' | 'vint' | 'cent' | 'mil' | 'alguns' | 'pocs' | 'molts' | 'tots'  
 Adv -> 'ràpidament' | 'ben'  
-V -> 'menja' | 'corre' | 'va' | 'és' | 'manegen' | 'ballant' | 'van'  
-Conj -> 'i' | 'o' | 'però' | 'sinó' | ','  
-Det -> 'el' | 'la' | 'els' | 'les' | 'un' | 'una' | 'uns' | 'unes'  
-N -> 'gat' | 'gats' | 'gata' | 'gates' | 'cotxe' | 'cotxes' | 'casa' | 'cases' | 'nenes' | 'nens'  
-P -> 'a' | 'amb' | 'en' | 'per' | 'sobre'  
-PropN -> 'Maria' | 'Pere' | 'Barcelona' | 'Catalunya' | 'Praga' | 'Madris'  
-Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' | 'això' | 'aixòs' | 'aquell' | 'aquella' | 'aquests' | 'aquestes'  
+Prep -> 'a' | 'davant' | 'baix' | 'cap' | 'amb' | 'contra' | 'de' | 'des' | 'fins' | 'per' | 'si' | 'sobre' | 'després'  
+Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles'  
+N -> 'nens' | 'nadons' | 'nena' | 'nenes' | 'nen' | 'nens' | 'dona' | 'dones' | 'home' | 'homes' | 'girafa' | 'cavall' | 'cotxe' | 'casa' | 'parc' | 'avió' | 'pares' | 'ballet' | 'futbol' | 'escola' | 'poma' | 'carn' | 'pesat'  
+PropN -> 'Xavi' | 'Albert' | 'Montse' | 'Eva' | 'Venècia' | 'Andorra' | 'València' | 'Catalonia' | 'Mèxic'  
+Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'encara que' | 'doncs' | 'però' | 'encara' | ',' | 'sinó'  
+
+
+Let's break down the analysis. To generate the grammar, the following sentences patters were considered plus the use of conjunctions.
+
+1. Subject + Verb + Adjective: La casa és verda. (The house is green)
+2. Subject + Verb + Adverb: Ell camina ràpid. (He walks fast)
+3. Subject + Verb + Prepositional Phrase: Ella viu a Girona. (She lives in Girona)
+4. Subject + Verb: Ella viu a Girona. (She lives in Girona)
+5. Conjugated Verb: corre. (run)
+
+In the first rule (E) we have the option to form sentences with only a Verb (Sentence pattern number 5) or form sentences with Subject and Verb, having the possibility to later include additions, like adjetive, adverb or prepositional phrase.  
+
+**E -> S V | V | E Conj E**
+
+The nexts 2 rules indicate the forms that a Subject can take:
+1. Subjects can go after a determinant which are predominal modifiers that can be an article (Art), an article (Art) with a possessive adjective (AdjPos) or an adjective complement (AdjC).
+
+Articles in Catalan are “el”, “la”, “els” and “les”. Indefinite articles are “un” and “una” for singular nouns and there are no specific indefinite articles in the plural form. Grouping an article with a possessive adjective indicate possesion overall. For example: "**My** dad" traslates to "**el meu** pare", having "el (Art) meu (AdjPos) pare". Lastly adjective complement (AdjC) include demonstrative ("aquest", "aquesta"), quantitative ("quatre", "cinc") and numeral ("alguns", "pocs", "molts") adjectives (TalkPal, 2024).
+
+2. Subjects can also take the form of Pronouns ('jo', 'tu', 'ell'), Nouns ('girafa', 'avió', 'pares' ) or Proper Nouns ('Xavi', 'Albert', 'Montse').
+
+3. And they can be added qualitative adjectives (AdjQual) to the describe the nouns, "and in Catalan, they agree in gender and number with the nouns they modify." (TalkPal, 2024).
+   
+5. Additionaly there is also the case where we have more than one Subject joined by a conjunction.
+   
+**S -> Det S | Pron | N | PropN | S AdjQual | S Conj S  
+Det -> Art | Art AdjPos | AdjC**
+
+
+Verbs in Catalan are classified into three groups with its distinct conjugation pattern based on their infinitive endings: “-ar,” “-er,” and “-ir.” Catalan also has auxiliary verbs (like ‘to have’ and ‘to be’) that combine with other verbs to create compound tenses and passive voice (TalkPal, 2024). But auxiliary verbs will not be considered for this grammar.  
+
+As can be seen in the sentence's patterns, verbs can be alone or they can be followed by a qualitative adjetive, an adverb or a Prepositional Phrase. And we can include one or many verbs.
+
+**V -> V | V AdjQual | V Adv | V PP | V Conj V**
+
+"Additionally, Catalan prepositions (such as “a,” “de,” “en,” “amb”) help you connect words and phrases and show relationships between them" (TalkPal, 2024). A prepositional phrase consists of a preposition and a subject and we will consider the possibility of having more than une combination of these. So we can form sentences like "Xavi , Montse i Albert van **a Venècia**...**amb avió**...**amb els seus pares**"
+
+**PP -> Prep S | PP PP** 
+
+The non terminals include words of the language separated by category: 
+V -> 'corre' | 'van' |'viatja' | 'visita' | 'visitem' | 'menja' | 'juga' | 'balla' | 'sóc' | 'és' | 'són' | 'som' | 'bota' | 'camina' | 'ploren'  
+Art -> 'el' | 'els' | 'la' | 'les' | 'un' | 'una' 
+AdjPos -> 'mi' | 'meves' | 'teu' | 'teus' | 'teva' | 'teves' | 'seva' | 'seves' | 'seu' | 'seus' | 'nostra' | 'nostre' | 'nostres'  
+AdjQual -> 'gran' | 'petit' | 'blanc' | 'vermell' | 'groc' | 'blau' | 'nou' | 'vell' | 'veloc'  
+AdjC -> 'aquest' | 'aquesta' | 'això' | 'aquell' | 'aquella' | 'aquests' | 'aquestes' | 'aquells' | 'aquelles' | 'dos' | 'tres' | 'quatre' | 'cinc' | 'sis' | 'deu' | 'quinze' | 'vint' | 'cent' | 'mil' | 'alguns' | 'pocs' | 'molts' | 'tots'  
+Adv -> 'ràpidament' | 'ben'  
+Prep -> 'a' | 'davant' | 'baix' | 'cap' | 'amb' | 'contra' | 'de' | 'des' | 'fins' | 'per' | 'si' | 'sobre' | 'després'  
+Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles'  
+N -> 'nens' | 'nadons' | 'nena' | 'nenes' | 'nen' | 'nens' | 'dona' | 'dones' | 'home' | 'homes' | 'girafa' | 'cavall' | 'cotxe' | 'casa' | 'parc' | 'avió' | 'pares' | 'ballet' | 'futbol' | 'escola' | 'poma' | 'carn' | 'pesat'  
+PropN -> 'Xavi' | 'Albert' | 'Montse' | 'Eva' | 'Venècia' | 'Andorra' | 'València' | 'Catalonia' | 'Mèxic'  
+Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'encara que' | 'doncs' | 'però' | 'encara' | ',' | 'sinó'  
+  
 
 ### Eliminate Ambiguity in the grammar.
-E -> E Conj E2 | E2  
-E2 -> S | S2 | VP  
-S -> NP VP  
-S2 -> NP VP NP    
-NP -> Det N | PropN | Pron | Det N Adj | Det N PP | PropN PP | Pron PP  
-PP -> P NP  
-VP -> V | V Adv | V PP  
+The previous grammar recognizes the language, however, it is ambiguous. This means a string can formed in more than own way with this rules, For example for: "Xavi , Montse i Albert van a Venècia amb avió amb els seus pares" these are a few ways that a Parse tree can be produced. 
+
+[ add images of the parse trees ]
+
+To eliminate embiguity this steps need to be followed:
+1. Read from left to right, if ambiguous (Same leves of priority) then:
+1.1. Add an intermediate non-terminal
+1.2. And an "or" to get to the terminal
+
+Evaluating the previous grammar, reading from left to right, we can found ambiguity in the first rule (E):
+E -> S V | V | **E Conj E**
+
+Which can be solved adding an intermediate non-terminal and an "or" to get to the terminal
+
+E ->  E Conj E2 | E2  
+E2 -> S V | V  
+
+The next rule we can found ambiguity is S, where we have:
+S -> Det S | Pron | N | PropN | S AdjQual | **S Conj S**
+
+For this rule, many non-terminals where added: [... more explanation...]
+S -> S Conj S2 | S2
+S2 -> S3 AdjQual | S3
+S3 -> Det S4 | PropN | S4
+S4 -> Pron | N 
+
+We also can identify ambiguity in the following rule:
+V -> V | V AdjQual | V Adv | V PP | V Conj V  
+
+That can be changed to:
+V -> V Conj V2 | V2
+V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
+
+
+Finally there is also ambiguity in this rule
+PP -> Prep S | PP PP  
+
+Which after removing ambiguity we have:
+PP -> PP Prep S | Prep S
+-->
+
+Leaving us with the next grammar, where inputs can only generate one Parse tree:
+
+E ->  E Conj E2 | E2
+E2 -> S V | V
+S -> S Conj S2 | S2
+S2 -> S3 AdjQual | S3
+S3 -> Det S4 | PropN | S4
+S4 -> Pron | N 
+Det -> Art | Art AdjPos | AdjC
+V -> V Conj V2 | V2
+V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
+PP -> PP Prep S | Prep S
+ 
   
 Adj -> 'gran' | 'blau' | 'bonic' | 'veloc' | 'vermell'  
 Adv -> 'ràpidament' | 'ben'  
@@ -97,12 +197,21 @@ Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' |
   
 
 ### Eliminate left recursion in the grammar.
- S -> NP VP  
-S2 -> NP VP NP  
-NP -> Det N | PropN | Pron | Det N Adj  | Det N PP | PropN PP  | Pron PP  
-PP -> P NP  
-VP -> V  | V Adv | V PP  
-E' -> Conj E2 E' | ϵ  
+[ change this ... ]
+E ->  E2 E’
+E’ -> Conj E2 E’ | ϵ
+E2 -> S V E3 | V
+E3 -> Adv | PP | AdjQual | ϵ
+S -> S2 S’
+S’ -> Conj S2 S’ | ϵ
+S2 -> S3 AdjQual | S3
+S3 -> Det S4 | PropN | S4
+S4 -> Pron | N 
+Det -> Art | Art AdjPos | AdjC
+V -> V2 V’
+V’ ->Conj V2 V’ | ϵ
+PP -> Prep S PP’
+PP’ -> Prep S PP’ |  ϵ
 
 Adj -> 'gran' | 'blau' | 'bonic' | 'veloc' | 'vermell'  
 Adv -> 'ràpidament' | 'ben'  
