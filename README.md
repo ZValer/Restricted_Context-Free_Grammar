@@ -4,22 +4,11 @@ E2 Generating and Cleaning a Restricted Context Free Grammar
 ## Catalan 
 
 ### Description:
+#### History
 Catalan, despite being mostly spoken in Spain, shares a lot of similarities with French. Its vocabulary  “has more in common with Occitan of southern France than with Spanish. It shares about 70 % of its lexicon with the first and about  20% with the second” (Gutman & Avanzati, 2013).
 
 
 After the loss of Catalonia's independence to the Crown of Castile, Catalan culture was affected by new laws that promoted the use of Spanish. However, in the early 19th century, several artists, authors and playwrights helped revive the language. Although until 1975 its use was prohibited and it was prohibited to give Catalan names to newborns, as well as street names, in music, television and cinema, it was even prohibited to speak Catalan in public. Currently, Catalan is the official language in Andorra and co-official in Valencia, Catalonia and the Balearic Islands (Translinguo Global, 2022).
-
-
-#### Language basics:
-
-1. Gender and nouns: they are divided into masculine or feminine, which influences their use with articles and adjectives, '-a' for feminine, while those ending in '-o' are masculine.
-2. Articles: there are definite articles (el, la, els, les) and indefinite articles (un, una, uns, unes), which agree in gender and number with the noun.
-3. Adjectives: Adjectives differentiate between masculine and feminine. And to form the plural, "-os" (masculine) and "-es" (feminine) are added.
-4. Verbs and Conjugation: Verbs in Catalan are classified into three groups based on their endings: “-ar,” “-er,” and “-ir.” Each group has its own conjugation pattern. Catalan also has auxiliary verbs (like ‘to have’ and ‘to be’) that combine with other verbs to create compound tenses and passive voice.
-*We won´t consider compund sentences in the analysis. 
-5. Pronouns and Prepositions: Catalan has subject pronouns (jo, tu, ell, ella, etc.) and object pronouns  (com "a", "de", "en", "amb") , which can undergo different changes depending on their function within a sentence. Additionally, Catalan prepositions (such as “a,” “de,” “en,” “amb”) help you connect words and phrases and show relationships between them.
-(TalkPal, 2024)
-
 
 #### Syntax
 
@@ -58,52 +47,51 @@ In the model analyzed of Catalan the non terminals are elements such as Subject,
 
 **Grammar:**
 ``` ruby
-E -> S V | V | E Conj E  
-S -> Det S | Pron | N | PropN | S AdjQual | S Conj S  
-Det -> Art | Art AdjPos | AdjC  
-V -> V | V AdjQual | V Adv | V PP | V Conj V  
-PP -> Prep S | PP PP  
+  E -> S V |  E Conj E  
+  S -> Det S | Pron | N | PropN | S AdjQual | S Conj S  
+  Det -> Art | Art AdjPos | AdjC  
+  V -> V | V AdjQual | V Adv | V PP | V Conj V  
+  PP -> Prep S | PP PP  
 
-V -> 'corre' | 'van' |'viatja' | 'visita' | 'visitem' | 'menja' | 'juga' | 'balla' | 'sóc' | 'és' | 'són' | 'som' | 'bota' | 'camina' | 'ploren'  
-Art -> 'el' | 'els' | 'la' | 'les' | 'un' | 'una' | 'uns' | 'unes'  
-AdjPos -> 'mi' | 'meves' | 'teu' | 'teus' | 'teva' | 'teves' | 'seva' | 'seves' | 'seu' | 'seus' | 'nostra' | 'nostre' | 'nostres'  
-AdjQual -> 'gran' | 'petit' | 'blanc' | 'vermell' | 'groc' | 'blau' | 'nou' | 'vell' | 'veloc'  
-AdjC -> 'aquest' | 'aquesta' | 'això' | 'aquell' | 'aquella' | 'aquests' | 'aquestes' | 'aquells' | 'aquelles' | 'dos' | 'tres' | 'quatre' | 'cinc' | 'sis' | 'deu' | 'quinze' | 'vint' | 'cent' | 'mil' | 'alguns' | 'pocs' | 'molts' | 'tots'  
-Adv -> 'ràpidament' | 'ben'  
-Prep -> 'a' | 'davant' | 'baix' | 'cap' | 'amb' | 'contra' | 'de' | 'des' | 'fins' | 'per' | 'si' | 'sobre' | 'després'  
-Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles'  
-N -> 'nens' | 'nadons' | 'nena' | 'nenes' | 'nen' | 'nens' | 'dona' | 'dones' | 'home' | 'homes' | 'girafa' | 'cavall' | 'cotxe' | 'casa' | 'parc' | 'avió' | 'pares' | 'ballet' | 'futbol' | 'escola' | 'poma' | 'carn' | 'pesat'  
-PropN -> 'Xavi' | 'Albert' | 'Montse' | 'Eva' | 'Venècia' | 'Andorra' | 'València' | 'Catalonia' | 'Mèxic'  
-Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'encara que' | 'doncs' | 'però' | 'encara' | ',' | 'sinó'  
+  V -> 'és' | 'cuina' | 'són' | 'corre' | 'visitan' | 'va' | 'van' | 'viu' | 'treballa' | 'criden' | 'ploren' | 'estan'
+  Art -> 'la' | 'les' | 'el' | 'els' | 'un' | 'una' | 'uns' | 'unes'
+  AdjPos -> 'seva' | 'seus' | 'mi' | 'teu' | 'teves' | 'seves' | 'seu' | 'nostres'
+  AdjQual -> 'verda' |  'vermella' | 'vermelles' | 'tristos' | 'nova' | 'alts' | 'baixos' | 'blaves' | 'petites'
+  AdjC -> 'aquelles' | 'aquest' | 'dues' | 'cinc' | 'mil' | 'alguns' | 'molts' | 'tots'
+  Adv -> 'ràpid' | 'bé' |'ràpidament' | 'ben'
+  Prep -> 'a' | 'amb' | 'contra' | 'de' | 'des' | 'en' 
+  Pron -> 'ella' | 'jo' | 'tu' | 'ell' | 'nosaltres' | 'vós' | 'ells' | 'elles' 
+  N ->  'casa' | 'bicicleta' | 'pilotes' | 'noies' | 'escola' | 'taxi' | 'ciutat' | 'germana' | 'nens' | 'avió' | 'pares'
+  PropN -> 'Xavi' | 'Albert' | 'Montse' | 'Eva' | 'Venècia' | 'València' | 'Mèxic'
+  Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'però' | ',' | 'sinó' 
 ```
 
 Let's break down the analysis. To generate the grammar, the following sentences patters were considered plus the use of conjunctions.
 
 1. Subject + Verb + Adjective: La casa és verda. (The house is green)
 2. Subject + Verb + Adverb: Ell camina ràpid. (He walks fast)
-3. Subject + Verb + Prepositional Phrase: Ella viu a Girona. (She lives in Girona)
-4. Subject + Verb: Ella viu a Girona. (She lives in Girona)
-5. Impersonal sentences->Conjugated Verb: corre. (run)
+3. Subject + Verb + Prepositional Phrase: Ella viu a Venècia. (She lives in Venice)
+4. Subject + Verb: Ella corre. (She runs)
 
-In the first rule (E) we have the option to form sentences with only a Verb (Sentence pattern number 5) or form sentences with Subject and Verb, having the possibility to later include additions, like adjetive, adverb or prepositional phrase.  
+In the first rule (E) we have the option to form sentences with Subject (S) and Verb (V), having the possibility to later include additions, like adjetive, adverb or prepositional phrase. And also to form sentences with conjunctions.  
 
 ```
-E -> S V | V | E Conj E
+E -> S V | E Conj E
 ```
 The nexts 2 rules indicate the forms that a Subject can take:
 1. Subjects can go after a determinant which are predominal modifiers that can be an article (Art), an article (Art) with a possessive adjective (AdjPos) or an adjective complement (AdjC).
 
-Articles in Catalan are “el”, “la”, “els” and “les”. Indefinite articles are “un” and “una” for singular nouns and there are no specific indefinite articles in the plural form. Grouping an article with a possessive adjective indicate possesion overall. For example: "**My** dad" traslates to "**el meu** pare", having "el (Art) meu (AdjPos) pare". Lastly adjective complement (AdjC) include demonstrative ("aquest", "aquesta"), quantitative ("quatre", "cinc") and numeral ("alguns", "pocs", "molts") adjectives (TalkPal, 2024).
+Articles in Catalan are definite: “el”, “la”, “els” and “les” or indefinite: “un” and “una”. Grouping an article with a possessive adjective indicate possesion overall. For example: "**My** dad" traslates to "**el meu** pare", having "el (Art) meu (AdjPos) pare". Lastly adjective complement (AdjC) include demonstrative ("aquest", "aquesta"), quantitative ("quatre", "cinc") and numeral ("alguns", "pocs", "molts") adjectives (TalkPal, 2024).
 
 2. Subjects can also take the form of Pronouns ('jo', 'tu', 'ell'), Nouns ('girafa', 'avió', 'pares' ) or Proper Nouns ('Xavi', 'Albert', 'Montse').
 
-3. And they can be added qualitative adjectives (AdjQual) to the describe the nouns, "and in Catalan, they agree in gender and number with the nouns they modify." (TalkPal, 2024).
+3. And they can be added a qualitative adjective (AdjQual) to the describe the nouns, "and in Catalan, they agree in gender and number with the nouns they modify." (TalkPal, 2024).
    
 5. Additionaly there is also the case where we have more than one Subject joined by a conjunction.
 
 ```
-S -> Det S | Pron | N | PropN | S AdjQual | S Conj S  
-Det -> Art | Art AdjPos | AdjC
+  S -> Det S | Pron | N | PropN | S AdjQual | S Conj S  
+  Det -> Art | Art AdjPos | AdjC  
 ```
 
 Verbs in Catalan are classified into three groups with its distinct conjugation pattern based on their infinitive endings: “-ar,” “-er,” and “-ir.” Catalan also has auxiliary verbs (like ‘to have’ and ‘to be’) that combine with other verbs to create compound tenses and passive voice (TalkPal, 2024). But auxiliary verbs will not be considered for this grammar.  
@@ -114,36 +102,37 @@ As can be seen in the sentence's patterns, verbs can be alone or they can be fol
 V -> V | V AdjQual | V Adv | V PP | V Conj V
 ```
 
-"Additionally, Catalan prepositions (such as “a,” “de,” “en,” “amb”) help you connect words and phrases and show relationships between them" (TalkPal, 2024). A prepositional phrase consists of a preposition and a subject and we will consider the possibility of having more than une combination of these. So we can form sentences like "Xavi , Montse i Albert van **a Venècia**...**amb avió**...**amb els seus pares**"
+"Additionally, Catalan prepositions (such as “a,” “de,” “en,” “amb”) help you connect words and phrases and show relationships between them" (TalkPal, 2024). A prepositional phrase consists of a preposition and a subject and we will consider the possibility of having more than une combination of these. So we can form sentences like "Xavi , Montse i Albert van ***a** Venècia...**amb** avió...**amb** els seus pares"*
 
 ```
 PP -> Prep S | PP PP
 ```
 
-The non terminals include words of the language separated by category: 
+The non terminals include a vocabulary of words of the language separated by category: 
 ```
-V -> 'corre' | 'van' |'viatja' | 'visita' | 'visitem' | 'menja' | 'juga' | 'balla' | 'sóc' | 'és' | 'són' | 'som' | 'bota' | 'camina' | 'ploren'  
-Art -> 'el' | 'els' | 'la' | 'les' | 'un' | 'una' 
-AdjPos -> 'mi' | 'meves' | 'teu' | 'teus' | 'teva' | 'teves' | 'seva' | 'seves' | 'seu' | 'seus' | 'nostra' | 'nostre' | 'nostres'  
-AdjQual -> 'gran' | 'petit' | 'blanc' | 'vermell' | 'groc' | 'blau' | 'nou' | 'vell' | 'veloc'  
-AdjC -> 'aquest' | 'aquesta' | 'això' | 'aquell' | 'aquella' | 'aquests' | 'aquestes' | 'aquells' | 'aquelles' | 'dos' | 'tres' | 'quatre' | 'cinc' | 'sis' | 'deu' | 'quinze' | 'vint' | 'cent' | 'mil' | 'alguns' | 'pocs' | 'molts' | 'tots'  
-Adv -> 'ràpidament' | 'ben'  
-Prep -> 'a' | 'davant' | 'baix' | 'cap' | 'amb' | 'contra' | 'de' | 'des' | 'fins' | 'per' | 'si' | 'sobre' | 'després'  
-Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles'  
-N -> 'nens' | 'nadons' | 'nena' | 'nenes' | 'nen' | 'nens' | 'dona' | 'dones' | 'home' | 'homes' | 'girafa' | 'cavall' | 'cotxe' | 'casa' | 'parc' | 'avió' | 'pares' | 'ballet' | 'futbol' | 'escola' | 'poma' | 'carn' | 'pesat'  
-PropN -> 'Xavi' | 'Albert' | 'Montse' | 'Eva' | 'Venècia' | 'Andorra' | 'València' | 'Catalonia' | 'Mèxic'  
-Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'encara que' | 'doncs' | 'però' | 'encara' | ',' | 'sinó'  
+ V -> 'és' | 'cuina' | 'són' | 'corre' | 'visitan' | 'va' | 'van' | 'viu' | 'treballa' | 'criden' | 'ploren' | 'estan'
+  Art -> 'la' | 'les' | 'el' | 'els' | 'un' | 'una' | 'uns' | 'unes'
+  AdjPos -> 'seva' | 'seus' | 'mi' | 'teu' | 'teves' | 'seves' | 'seu' | 'nostres'
+  AdjQual -> 'verda' |  'vermella' | 'vermelles' | 'tristos' | 'nova' | 'alts' | 'baixos' | 'blaves' | 'petites'
+  AdjC -> 'aquelles' | 'aquest' | 'dues' | 'cinc' | 'mil' | 'alguns' | 'molts' | 'tots'
+  Adv -> 'ràpid' | 'bé' |'ràpidament' | 'ben'
+  Prep -> 'a' | 'amb' | 'contra' | 'de' | 'des' | 'en' 
+  Pron -> 'ella' | 'jo' | 'tu' | 'ell' | 'nosaltres' | 'vós' | 'ells' | 'elles' 
+  N ->  'casa' | 'bicicleta' | 'pilotes' | 'noies' | 'escola' | 'taxi' | 'ciutat' | 'germana' | 'nens' | 'avió' | 'pares'
+  PropN -> 'Xavi' | 'Albert' | 'Montse' | 'Eva' | 'Venècia' | 'València' | 'Mèxic'
+  Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'però' | ',' | 'sinó'
 ```
 
 ### Eliminate Ambiguity in the grammar.
-The previous grammar recognizes the language, however, it is ambiguous. This means a string can formed in more than own way with this rules, For example for: "Xavi , Montse i Albert van a Venècia amb avió amb els seus pares" these are a few ways that a Parse tree can be produced. 
+The previous grammar recognizes the language, however, it is ambiguous. This means a string can formed in more than own way with this rules, For example for: "la casa és verda" these are a few ways that a Parse tree can be produced. 
 
-[ add images of the parse trees ]
+![image](https://github.com/ZValer/Restricted_Context-Free_Grammar/assets/111622587/0f8dd85e-8fcf-4faf-b2da-9c0c37085afa)
 
-To eliminate embiguity this steps need to be followed:
-1. Read from left to right, if ambiguous (Same leves of priority) then:
-1.1. Add an intermediate non-terminal
-1.2. And an "or" to get to the terminal
+
+To eliminate ambiguity this steps need to be followed:  
+1. Read from left to right, if ambiguous (Same level of priority) then:  
+   1.1. Add an intermediate non-terminal  
+    1.2. And an "or" to get to the terminal  
 
 Evaluating the previous grammar, reading from left to right, we can found ambiguity in the first rule (E):
 
@@ -156,14 +145,14 @@ E ->  E Conj E2 | E2
 E2 -> S V | V  
 ```
 The next rule we can found ambiguity is S, where we have:
-  - S -> Det S | Pron | N | PropN | S AdjQual | **S Conj S**
+  - S -> Det **S** | Pron | N | PropN | **S** AdjQual | **S Conj S**
 
-For this rule, many non-terminals where added: [... more explanation...]
+For this rule, a few non-terminals where added, this way the tree can only follow one path:
 ```
 S -> S Conj S2 | S2
 S2 -> S3 AdjQual | S3
-S3 -> Det S4 | PropN | S4
-S4 -> Pron | N
+S3 -> Det S4 | S4
+S4 -> Pron | N | PropN 
 ```
 
 We also can identify ambiguity in the following rule:
@@ -175,7 +164,6 @@ V -> V Conj V2 | V2
 V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
 ```
 
-
 Finally there is also ambiguity in this rule
   - PP -> Prep S | PP PP  
 
@@ -183,34 +171,34 @@ Which after removing ambiguity we have:
 ```
 PP -> PP Prep S | Prep S
 ```
--------------------------------------------
 
 Leaving us with the next grammar, where inputs can only generate one Parse tree:
 
 ``` ruby
-E ->  E Conj E2 | E2
-E2 -> S V | V
-S -> S Conj S2 | S2
-S2 -> S3 AdjQual | S3
-S3 -> Det S4 | PropN | S4
-S4 -> Pron | N 
-Det -> Art | Art AdjPos | AdjC
-V -> V Conj V2 | V2
-V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
-PP -> PP Prep S | Prep S
- 
-  
-Adj -> 'gran' | 'blau' | 'bonic' | 'veloc' | 'vermell'  
-Adv -> 'ràpidament' | 'ben'  
-V3 -> 'menja' | 'corre' | 'va' | 'és' | 'manegen' | 'ballant' | 'van'  
-Conj -> 'i' | 'o' | 'però' | 'sinó' | ','  
-Det -> 'el' | 'la' | 'els' | 'les' | 'un' | 'una' | 'uns' | 'unes'  
-N -> 'gat' | 'gats' | 'gata' | 'gates' | 'cotxe' | 'cotxes' | 'casa' | 'cases' |  
- 'nenes' | 'nens'    
-P -> 'a' | 'amb' | 'en' | 'per' | 'sobre'    
-PropN -> 'Maria' | 'Pere' | 'Barcelona' | 'Catalunya' | 'Praga' | 'Madris'    
-Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' |
- 'això' | 'aixòs' | 'aquell' | 'aquella' | 'aquests' | 'aquestes'
+  E ->  E Conj E2 | E2
+  E2 -> S V
+  S -> S Conj S2 | S2
+  S2 -> S3 AdjQual | S3
+  S3 -> Det S4 | S4
+  S4 -> Pron | N | PropN 
+  Det -> Art | Art Det2 | AdjC
+  Det2 -> AdjPos | AdjC
+  V -> V Conj V2 | V2
+  V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
+  PP -> PP Prep S | Prep S
+
+
+  V3 -> 'és' | 'cuina' | 'són' | 'corre' | 'visitan' | 'va' | 'van' | 'viu' | 'treballa' | 'criden' | 'ploren' | 'estan'
+  Art -> 'la' | 'les' | 'el' | 'els' | 'un' | 'una' | 'uns' | 'unes'
+  AdjPos -> 'seva' | 'seus' | 'mi' | 'teu' | 'teves' | 'seves' | 'seu' | 'nostres'
+  AdjQual -> 'verda' |  'vermella' | 'vermelles' | 'tristos' | 'nova' | 'alts' | 'baixos' | 'blaves' | 'petites'
+  AdjC -> 'aquelles' | 'aquest' | 'dues' | 'cinc' | 'mil' | 'alguns' | 'molts' | 'tots'
+  Adv -> 'ràpid' | 'bé' |'ràpidament' | 'ben'
+  Prep -> 'a' | 'amb' | 'contra' | 'de' | 'des' | 'en' 
+  Pron -> 'ella' | 'jo' | 'tu' | 'ell' | 'nosaltres' | 'vós' | 'ells' | 'elles' 
+  N ->  'casa' | 'bicicleta' | 'pilotes' | 'noies' | 'escola' | 'taxi' | 'ciutat' | 'germana' | 'nens' | 'avió' | 'pares'
+  PropN -> 'Xavi' | 'Albert' | 'Montse' | 'Eva' | 'Venècia' | 'València' | 'Mèxic'
+  Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'però' | ',' | 'sinó'
 ```
 
 ### Eliminate left recursion in the grammar.
@@ -265,19 +253,19 @@ Leaving us with the following grammar without left recursion:
 ```ruby
 E ->  E2 E’
 E’ -> Conj E2 E’ | ϵ
-E2 -> S V | V
+E2 -> S V 
 S -> S2 S’
 S’ -> Conj S2 S’ | ϵ
 S2 -> S3 AdjQual | S3
-S3 -> Det S4 | PropN | S4
-S4 -> Pron | N 
-Det -> Art | Art AdjPos | AdjC
+S3 -> Det S4 | S4
+S4 -> Pron | N | PropN 
+Det -> Art | Art Det2 | AdjC
+Det2 -> AdjPos | AdjC
 V -> V2 V’
 V’ ->Conj V2 V’ | ϵ
 V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
 PP -> Prep S PP’
 PP’ -> Prep S PP’ |  ϵ
-
 
 Adj -> 'gran' | 'blau' | 'bonic' | 'veloc' | 'vermell'  
 Adv -> 'ràpidament' | 'ben'  
@@ -291,7 +279,18 @@ Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' |
 ```
 
 
-#### Adapted for the code
+
+### Implementation:
+The implementation of the grammar uses the library nltk in python.
+To test every grammar modification consult the following:  
+**Ambiguous**:   
+https://colab.research.google.com/drive/1ZFGeFtPMJD-o7N5yyRCJoIGnKDu_psA6?usp=sharing    
+**Non ambiguous**:   
+https://colab.research.google.com/drive/1wI5OKmj2THOuXVgumSIPAoSad24vbEor?usp=sharing     
+**No left recursion**:   
+https://colab.research.google.com/drive/1n-aFM1E9AETQpezNtEoQ5MkyGFUd27ZV?usp=sharing    
+
+#### Grammar adapted for the code for 'No left recursion"
 The nltk library doesn´t accept the use of ' and ϵ. The next steps were followed to get an acceptable grammar for the library:  
 
 For the following:
@@ -313,38 +312,37 @@ Eapos -> Conj E2 Eapos | Conj E2
 
 ```
 
-These steps were followed through all the grammar. Leaving us with a grammar representing the previous grammar that can be (...) with nltk library:  
+These steps were followed through all the grammar. Leaving us with a grammar representing the previous grammar that can be parsed with nltk library:  
 
 ``` ruby
-E ->  E2 Eapos | E2
-Eapos -> Conj E2 Eapos | Conj E2
-E2 -> S V | V
-S -> S2 Sapos | S2
-Sapos -> Conj S2 Sapos | Conj S2
-S2 -> S3 AdjQual | S3
-S3 -> Det S4 | PropN | S4
-S4 -> Pron | N 
-Det -> Art | Art AdjPos | AdjC
-V -> V2 Vapos | V2
-Vapos -> Conj V2 Vapos | Conj V2
-V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
-PP -> Prep S PPapos |  Prep S
-PPapos -> Prep S PPapos | Prep S 
+  E ->  E2 Eapos | E2
+  Eapos -> Conj E2 Eapos | Conj E2
+  E2 -> S V
+  S -> S2 Sapos | S2
+  Sapos -> Conj S2 Sapos | Conj S2
+  S2 -> S3 AdjQual | S3
+  S3 -> Det S4 | S4
+  S4 -> Pron | N | PropN 
+  Det -> Art | Art Det2 | AdjC
+  Det2 -> AdjPos | AdjC
+  V -> V2 Vapos | V2
+  Vapos -> Conj V2 Vapos | Conj V2
+  V2 -> V3 AdjQual | V3 Adv | V3 PP | V3 AdjQual | V3
+  PP -> Prep S PPapos |  Prep S
+  PPapos -> Prep S PPapos | Prep S 
 
-
-Adj -> 'gran' | 'blau' | 'bonic' | 'veloc' | 'vermell'  
-Adv -> 'ràpidament' | 'ben'  
-V -> 'menja' | 'corre' | 'va' | 'és' | 'manegen' | 'ballant' | 'van'  
-Conj -> 'i' | 'o' | 'però' | 'sinó' | ','  
-Det -> 'el' | 'la' | 'els' | 'les' | 'un' | 'una' | 'uns' | 'unes'  
-N -> 'gat' | 'gats' | 'gata' | 'gates' | 'cotxe' | 'cotxes' | 'casa' | 'cases' | 'nenes' | 'nens'  
-P -> 'a' | 'amb' | 'en' | 'per' | 'sobre'  
-PropN -> 'Maria' | 'Pere' | 'Barcelona' | 'Catalunya' | 'Praga' | 'Madris'  
-Pron -> 'jo' | 'tu' | 'ell' | 'ella' | 'nosaltres' | 'vós' | 'ells' | 'elles' | 'això' | 'aixòs' | 'aquell' | 'aquella' | 'aquests' | 'aquestes'  
+  V3 -> 'és' | 'cuina' | 'són' | 'corre' | 'visitan' | 'va' | 'van' | 'viu' | 'treballa' | 'criden' | 'ploren' | 'estan'
+  Art -> 'la' | 'les' | 'el' | 'els' | 'un' | 'una' | 'uns' | 'unes'
+  AdjPos -> 'seva' | 'seus' | 'mi' | 'teu' | 'teves' | 'seves' | 'seu' | 'nostres'
+  AdjQual -> 'verda' |  'vermella' | 'vermelles' | 'tristos' | 'nova' | 'alts' | 'baixos' | 'blaves' | 'petites'
+  AdjC -> 'aquelles' | 'aquest' | 'dues' | 'cinc' | 'mil' | 'alguns' | 'molts' | 'tots'
+  Adv -> 'ràpid' | 'bé' |'ràpidament' | 'ben'
+  Prep -> 'a' | 'amb' | 'contra' | 'de' | 'des' | 'en' 
+  Pron -> 'ella' | 'jo' | 'tu' | 'ell' | 'nosaltres' | 'vós' | 'ells' | 'elles' 
+  N ->  'casa' | 'bicicleta' | 'pilotes' | 'noies' | 'escola' | 'taxi' | 'ciutat' | 'germana' | 'nens' | 'avió' | 'pares'
+  PropN -> 'Xavi' | 'Albert' | 'Montse' | 'Eva' | 'Venècia' | 'València' | 'Mèxic'
+  Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'però' | ',' | 'sinó'
 ```
-
-
-
 #### Strings to accept
 Sentence patterns that are accepted plus the use of conjunctions.
 
@@ -355,33 +353,46 @@ Sentence patterns that are accepted plus the use of conjunctions.
 3. Subject + Verb + Prepositional Phrase
     - Ella viu a Girona. (She lives in Girona)
 4. Subject + Verb
-    - Ella viu a Girona. (She lives in Girona)
+    - Ella corre. (She runs)
 5. Conjugated Verb
     - corre. (run)
 6. Conjunctions with this sentences paterns
-    - example 1...
-    - example 2...
 
+###### Valid input
+- "la casa és verda",
+- "les cinc pilotes vermelles i les dues pilotes blaves són petites",
+- "ella corre ràpid",
+- "Albert cuina bé i cuina ràpid",
+- "aquelles noies visitan a la escola",
+- "el taxi va a la ciutat",
+- "ella viu a València amb la seva germana",
+- "la Montse treballa",
+- "Eva i Albert són alts però la Montse i Albert són baixos",
+- "alguns nens criden i ploren perquè estan tristos",
+- "Xavi , Montse i Albert van a Venècia amb avió amb els seus pares",
 
-
-###### Valid
-- "Maria corre ràpidament",
-- "ells ballant a Barcelona",
-- "ell va a Catalunya",
-- "ells ballant a Barcelona i ell va a Catalunya",
-###### Invalid
+###### Invalid input
 - "ràpidament",
 - "ella vive en Barcelona",
-- "ells bailaaant na Barclona"
-
-
-### Implementation:
-The implementation uses the library nltk in python.
-To test every grammar modification (ambiguous, non ambiguous and no left recursion):
-https://colab.research.google.com/drive/1nnfthD9neyCilSnmddMhJuA5_lhBcYDd?usp=sharing 
+- "this sentence is in English",
+- "corre verda ella les"
+- "scjv ddkd ddd cf"
 
 ### Test: 
-Run the program to accept the grammar. 
+After running each program you can see the tests with the previous defined sentences: Valid input and invalid input.   
+Here is an example of the output of the test with the same sentence in every modification:  
+
+**Ambiguous**:    
+![image](https://github.com/ZValer/Restricted_Context-Free_Grammar/assets/111622587/70196a46-f5cd-4f64-b703-57e98e18a6c4)
+![image](https://github.com/ZValer/Restricted_Context-Free_Grammar/assets/111622587/ff0eb5e0-87f2-42f2-a8d5-7b1b0e0da36b)  
+
+
+**Non ambiguous**:    
+![image](https://github.com/ZValer/Restricted_Context-Free_Grammar/assets/111622587/72c11d51-37d6-4648-b7b3-4d70bb28c95d)  
+
+**No left recursion**:    
+![image](https://github.com/ZValer/Restricted_Context-Free_Grammar/assets/111622587/4272a155-3bf8-4d45-a1fe-4c0589ba8bb2)  
+  
 
 ### Analysis:
 (Thoroughly explain what type of grammar it is (Chomsky Hierarchy Extended Level), what traits does it have, and why is not on any other level.)
