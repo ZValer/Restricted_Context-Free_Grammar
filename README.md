@@ -415,11 +415,19 @@ which says to rewrite the string ‘A’ as the string ‘A B C’. However, a r
 z A -> A B C  
 which indicates that A can be so rewritten only when preceded by a z would be a “context sensitive” grammar (Tecumseh, 2014). Which is not the case for the grammar previously generated. Where rules are written in the first way. 
 
-[... Explain LL(1) and way it is going to be used...]
-
 ### Time complexity
+**Ambiguous**:    
+General Context-Free Grammars have a time complexity of O($n^3$).
 
-##### References:
+**Non ambiguous**:  
+Unambiguous Context-Free Grammars have a time complexity of O($n^2$).
+
+**No left recursion**:   
+LL(1) Grammars have a time complexity of O(n).
+
+After analizing each code we can declare that the most efficient for the problem is the grammar with no left recursion. 
+
+### References:
 
 Gutman, A. & Avanzati, B. (2013). Catalan. The Language Gulper. Retrieved from:
 https://www.languagesgulper.com/eng/Catalan.html#:~:text=The%20basic%20word%20order%20in,subject%20at%20all%20(impersonal).
