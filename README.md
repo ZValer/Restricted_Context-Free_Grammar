@@ -27,7 +27,7 @@ In addition to the basic SVO structure, a few common sentence patterns are the f
 
 ### Models:
 
-### Generating the grammar that recognizes the language
+#### Generating the grammar that recognizes the language
 
 Let's break down the analysis to generate a grammar that recognizes de language.  
 The following sentences patters were considered plus the use of conjunctions.
@@ -108,7 +108,7 @@ Joining all the rules we get the following **grammar**:
   Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'però' | ',' | 'sinó' 
 ```
 
-### Eliminate Ambiguity in the grammar.
+#### Eliminate Ambiguity in the grammar.
 The previous grammar recognizes the language, however, it is ambiguous. This means a string can formed in more than own way with this rules, For example for: "la casa és verda" these are a few ways that a Parse tree can be produced. 
 
 ![image](https://github.com/ZValer/Restricted_Context-Free_Grammar/assets/111622587/0f8dd85e-8fcf-4faf-b2da-9c0c37085afa)
@@ -187,7 +187,7 @@ Leaving us with the next grammar, where inputs can only generate one Parse tree:
   Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'però' | ',' | 'sinó'
 ```
 
-### Eliminate left recursion in the grammar.
+#### Eliminate left recursion in the grammar.
 [ Add why is it important to eliminate left recursion ]
 
 To eliminate left recursion the next rule as followed.
@@ -344,7 +344,10 @@ Sentence patterns that are accepted plus the use of conjunctions.
     - corre. (run)
 6. Conjunctions with this sentences paterns
 
-###### Valid input
+### Tests: 
+After running each program you can see the tests with the previous this defined sentences: 
+
+###### Valid sentences
 - "la casa és verda",
 - "les cinc pilotes vermelles i les dues pilotes blaves són petites",
 - "ella corre ràpid",
@@ -357,16 +360,22 @@ Sentence patterns that are accepted plus the use of conjunctions.
 - "alguns nens criden i ploren perquè estan tristos",
 - "Xavi , Montse i Albert van a Venècia amb avió amb els seus pares",
 
-###### Invalid input
+###### Invalid sentences
 - "ràpidament",
 - "ella vive en Barcelona",
 - "this sentence is in English",
 - "corre verda ella les"
 - "scjv ddkd ddd cf"
 
-### Test: 
-After running each program you can see the tests with the previous defined sentences: Valid input and invalid input.   
-Here is an example of the output of the test with the same sentence in every modification:  
+The expected output for the valid sentences is "Valid grammar" and a Parse Tree and for the invalid sentences it should print "Invalid grammar" and the error if it´s the case. 
+Here is an example of the output of the test with the same sentence in every modification (To see the rest go to:
+**Ambiguous**:   
+https://colab.research.google.com/drive/1ZFGeFtPMJD-o7N5yyRCJoIGnKDu_psA6?usp=sharing    
+**Non ambiguous**:   
+https://colab.research.google.com/drive/1wI5OKmj2THOuXVgumSIPAoSad24vbEor?usp=sharing     
+**No left recursion**:   
+https://colab.research.google.com/drive/1n-aFM1E9AETQpezNtEoQ5MkyGFUd27ZV?usp=sharing    
+
 
 **Ambiguous**:    
 ![image](https://github.com/ZValer/Restricted_Context-Free_Grammar/assets/111622587/70196a46-f5cd-4f64-b703-57e98e18a6c4)
@@ -381,8 +390,6 @@ Here is an example of the output of the test with the same sentence in every mod
   
 
 ### Analysis:
-(Thoroughly explain what type of grammar it is (Chomsky Hierarchy Extended Level), what traits does it have, and why is not on any other level.)
-
 **Grammar** includes a set of rules which we can derive strings. These rules are effectively statements of logical equivalence of tht form  ψ → ω, where ψ and ω are strings (Caltech, s.f.). Each branch corresponds to one rule. The mother of each branch corresponds to ψ and the daughters to ω. 
 
 The language that is being modelled can be described in a **context-Free grammar**, in which all rules of R are of the form A → ψ  
