@@ -27,46 +27,10 @@ In addition to the basic SVO structure, a few common sentence patterns are the f
 
 ### Models:
 
-**Grammar** includes a set of rules which we can derive strings. These rules are effectively statements of logical equivalence of tht form  ψ → ω, where ψ and ω are strings (Caltech, s.f.). Each branch corresponds to one rule. The mother of each branch corresponds to ψ and the daughters to ω. 
+### Generating the grammar that recognizes the language
 
-The language that is being modelled can be described in a **context-Free grammar**, in which all rules of R are of the form A → ψ  
-- **A:** is a single non-terminal element of V<sub>N</sub>
-- **ψ:** is a string of terminals from V<sub>T</sub> and non-terminals from of V<sub>N</sub>.
-  
-Example...  
-- **V<sub>T</sub>** = {a, b}
-- **V<sub>N</sub>** = {S, A}
-- **S**=S
-- **R** = {S → Ab, A → ε , A → Aa] 
-
-### Generating the grammar that recognizes the language.
-In the model analyzed of Catalan the non terminals are elements such as Subject, Verb, Adverb, Prepositional Phrase; and terminal are words such as 
-'gran', 'blau', 'ràpidament',  'ben','menja', 'corre'.
-
-[... Explain LL(1) and way it is going to be used...]
-
-**Grammar:**
-``` ruby
-  E -> S V |  E Conj E  
-  S -> Det S | Pron | N | PropN | S AdjQual | S Conj S  
-  Det -> Art | Art AdjPos | AdjC  
-  V -> V | V AdjQual | V Adv | V PP | V Conj V  
-  PP -> Prep S | PP PP  
-
-  V -> 'és' | 'cuina' | 'són' | 'corre' | 'visitan' | 'va' | 'van' | 'viu' | 'treballa' | 'criden' | 'ploren' | 'estan'
-  Art -> 'la' | 'les' | 'el' | 'els' | 'un' | 'una' | 'uns' | 'unes'
-  AdjPos -> 'seva' | 'seus' | 'mi' | 'teu' | 'teves' | 'seves' | 'seu' | 'nostres'
-  AdjQual -> 'verda' |  'vermella' | 'vermelles' | 'tristos' | 'nova' | 'alts' | 'baixos' | 'blaves' | 'petites'
-  AdjC -> 'aquelles' | 'aquest' | 'dues' | 'cinc' | 'mil' | 'alguns' | 'molts' | 'tots'
-  Adv -> 'ràpid' | 'bé' |'ràpidament' | 'ben'
-  Prep -> 'a' | 'amb' | 'contra' | 'de' | 'des' | 'en' 
-  Pron -> 'ella' | 'jo' | 'tu' | 'ell' | 'nosaltres' | 'vós' | 'ells' | 'elles' 
-  N ->  'casa' | 'bicicleta' | 'pilotes' | 'noies' | 'escola' | 'taxi' | 'ciutat' | 'germana' | 'nens' | 'avió' | 'pares'
-  PropN -> 'Xavi' | 'Albert' | 'Montse' | 'Eva' | 'Venècia' | 'València' | 'Mèxic'
-  Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'però' | ',' | 'sinó' 
-```
-
-Let's break down the analysis. To generate the grammar, the following sentences patters were considered plus the use of conjunctions.
+Let's break down the analysis to generate a grammar that recognizes de language.  
+The following sentences patters were considered plus the use of conjunctions.
 
 1. Subject + Verb + Adjective: La casa és verda. (The house is green)
 2. Subject + Verb + Adverb: Ell camina ràpid. (He walks fast)
@@ -123,6 +87,27 @@ The non terminals include a vocabulary of words of the language separated by cat
   Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'però' | ',' | 'sinó'
 ```
 
+Joining all the rules we get the following **grammar**:
+``` ruby
+  E -> S V |  E Conj E  
+  S -> Det S | Pron | N | PropN | S AdjQual | S Conj S  
+  Det -> Art | Art AdjPos | AdjC  
+  V -> V | V AdjQual | V Adv | V PP | V Conj V  
+  PP -> Prep S | PP PP  
+
+  V -> 'és' | 'cuina' | 'són' | 'corre' | 'visitan' | 'va' | 'van' | 'viu' | 'treballa' | 'criden' | 'ploren' | 'estan'
+  Art -> 'la' | 'les' | 'el' | 'els' | 'un' | 'una' | 'uns' | 'unes'
+  AdjPos -> 'seva' | 'seus' | 'mi' | 'teu' | 'teves' | 'seves' | 'seu' | 'nostres'
+  AdjQual -> 'verda' |  'vermella' | 'vermelles' | 'tristos' | 'nova' | 'alts' | 'baixos' | 'blaves' | 'petites'
+  AdjC -> 'aquelles' | 'aquest' | 'dues' | 'cinc' | 'mil' | 'alguns' | 'molts' | 'tots'
+  Adv -> 'ràpid' | 'bé' |'ràpidament' | 'ben'
+  Prep -> 'a' | 'amb' | 'contra' | 'de' | 'des' | 'en' 
+  Pron -> 'ella' | 'jo' | 'tu' | 'ell' | 'nosaltres' | 'vós' | 'ells' | 'elles' 
+  N ->  'casa' | 'bicicleta' | 'pilotes' | 'noies' | 'escola' | 'taxi' | 'ciutat' | 'germana' | 'nens' | 'avió' | 'pares'
+  PropN -> 'Xavi' | 'Albert' | 'Montse' | 'Eva' | 'Venècia' | 'València' | 'Mèxic'
+  Conj -> 'i' | 'o' | 'ni' | 'perquè' | 'però' | ',' | 'sinó' 
+```
+
 ### Eliminate Ambiguity in the grammar.
 The previous grammar recognizes the language, however, it is ambiguous. This means a string can formed in more than own way with this rules, For example for: "la casa és verda" these are a few ways that a Parse tree can be produced. 
 
@@ -172,8 +157,9 @@ Which after removing ambiguity we have:
 PP -> PP Prep S | Prep S
 ```
 
-Leaving us with the next grammar, where inputs can only generate one Parse tree:
+Leaving us with the next grammar, where inputs can only generate one Parse tree:  
 
+**Unambiguous Grammar:**
 ``` ruby
   E ->  E Conj E2 | E2
   E2 -> S V
@@ -249,7 +235,7 @@ We can eliminate left recursion:
 { PP -> Prep S PP' , PP' -> Prep S PP' | ϵ
 ```
 
-Leaving us with the following grammar without left recursion:
+Leaving us with the following **grammar without left recursion**:
 ```ruby
 E ->  E2 E’
 E’ -> Conj E2 E’ | ϵ
@@ -397,7 +383,34 @@ Here is an example of the output of the test with the same sentence in every mod
 ### Analysis:
 (Thoroughly explain what type of grammar it is (Chomsky Hierarchy Extended Level), what traits does it have, and why is not on any other level.)
 
+**Grammar** includes a set of rules which we can derive strings. These rules are effectively statements of logical equivalence of tht form  ψ → ω, where ψ and ω are strings (Caltech, s.f.). Each branch corresponds to one rule. The mother of each branch corresponds to ψ and the daughters to ω. 
 
+The language that is being modelled can be described in a **context-Free grammar**, in which all rules of R are of the form A → ψ  
+- **A:** is a single non-terminal element of V<sub>N</sub>
+- **ψ:** is a string of terminals from V<sub>T</sub> and non-terminals from of V<sub>N</sub>.
+  
+Example...  
+- **V<sub>T</sub>** = {a, b}
+- **V<sub>N</sub>** = {S, A}
+- **S**=S
+- **R** = {S → Ab, A → ε , A → Aa] 
+
+In the model analyzed of Catalan the non terminals are elements such as Subject, Verb, Adverb, Prepositional Phrase; and terminal are words such as 
+'gran', 'blau', 'ràpidament', 'ben','visitan', 'corre'.
+
+
+This context-free grammar that can be accepted with a push-down automaton. In the Chomsky Hierarchy it is the second less restricted grammar, more complex than a regular grammar that can be accepted with a finite automaton (Tecumseh, 2014).
+![image](https://github.com/ZValer/Restricted_Context-Free_Grammar/assets/111622587/a39091c7-42f5-427f-aec4-f73d363d10ff)
+
+Context free grammars are defined as “rewrite rules” which allow one string to be rewritten as another string, given certain restrictions. For example, a context-free grammar can include rules such as  
+A -> A B C  
+which says to rewrite the string ‘A’ as the string ‘A B C’. However, a rule such as  
+z A -> A B C  
+which indicates that A can be so rewritten only when preceded by a z would be a “context sensitive” grammar (Tecumseh, 2014). Which is not the case for the grammar previously generated. Where rules are written in the first way. 
+
+[... Explain LL(1) and way it is going to be used...]
+
+### Time complexity
 
 ##### References:
 
@@ -411,3 +424,5 @@ TalkPal. (2024). Catalan Grammar: A Quick Guide for Language Enthusiasts.TalkPal
 Translinguo Global. (2022). “Todo lo que necesitas saber sobre el idioma catalán”. Transilguo. Retrieved from: https://translinguoglobal.com/idioma-catalan/ 
 
 Caltech. (s.f.). Chapter 6 Formal Language Theory. Math.dvi. Retrieved from: https://www.its.caltech.edu/~matilde/FormalLanguageTheory.pdf 
+
+Tecumseh, W. (2014). Toward a computational framework for cognitive biology: Unifying approaches from cognitive neuroscience and comparative cognition. Elsevier. Retrieved from: https://www.sciencedirect.com/science/article/pii/S157106451400058X#fg0040
